@@ -9,7 +9,7 @@ RUN bash -c "source /etc/profile.d/rvm.sh;rvm requirements"
 RUN bash -c "source /etc/profile.d/rvm.sh;rvm install 2.0.0"
 RUN bash -c "source /etc/profile.d/rvm.sh;rvm use 2.0.0 --default"
 #RUN bash -c "source /etc/profile.d/rvm.sh;rvm rubygems current"
-RUN bash -c "source /etc/profile.d/rvm.sh;gem install --no-ri --no-rdoc --version 1.11.0 fpm"
+RUN bash -c "source /etc/profile.d/rvm.sh;gem install fpm --no-ri --no-rdoc --version 1.11.0"
 RUN yum -y install openssl-devel readline-devel\
     bzip2-devel sqlite-devel zlib-devel ncurses-devel\
     db4-devel expat-devel gdbm-devel
