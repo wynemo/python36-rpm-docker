@@ -23,8 +23,8 @@ RUN cd /build/Python-${BUILD_VER}\
     && make -j2 && make install DESTDIR=/tmp/installdir
 RUN echo 'echo /usr/local/lib > /etc/ld.so.conf.d/usr-local-lib.conf' > /tmp/installdir/run-ldconfig.sh
 RUN echo '/sbin/ldconfig' >> /tmp/installdir/run-ldconfig.sh
-RUN bash -c "find /tmp/installdir/lib/python3.6/ -type d -name __pycache__ -exec rmdir {} \;"
-RUN bash -c "find /tmp/installdir/lib/python3.6/ -name "*.pyc" -exec rm -f {} \;"
+RUN bash -c "find /tmp/installdir/usr/local/lib/python3.6/ -type d -name __pycache__ -exec rmdir {} \;"
+RUN bash -c "find /tmp/installdir/usr/local/lib/python3.6/ -name "*.pyc" -exec rm -f {} \;"
 RUN bash -c "source /etc/profile.d/rvm.sh;\
     fpm -s dir -t rpm -n python36 -v ${BUILD_VER} -C /tmp/installdir \
     --after-install /tmp/installdir/run-ldconfig.sh \
